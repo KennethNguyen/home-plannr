@@ -21,7 +21,7 @@ const Members = () => {
   ];
 
   return (
-    <VStack spacing={4}>
+    <VStack spacing={4} mb={5}>
       <Heading mt={4} textAlign="center">
         Members
       </Heading>

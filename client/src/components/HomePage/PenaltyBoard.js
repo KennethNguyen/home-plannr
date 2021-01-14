@@ -1,11 +1,52 @@
-import React from 'react'
+import React from "react";
+import {
+  Box,
+  Heading,
+  VStack,
+  Flex,
+  Spacer,
+  IconButton,
+  Text,
+} from "@chakra-ui/react";
+import { DeleteIcon } from "@chakra-ui/icons";
 
 const PenaltyBoard = () => {
-    return (
-        <div>
-            
-        </div>
-    )
-}
+  const penalties = [
+    "Unwashed dishes",
+    "Toaster oven left on with no food",
+    "Left empty rice cooker unwashed",
+  ];
+  return (
+    <VStack mb={5}>
+      <Heading mt={4} texAlign="center">
+        But Y Tho
+      </Heading>
+      {penalties.map((penalty) => (
+        <Flex
+          w="80%"
+          boxShadow="base"
+          p={1}
+          rounded="md"
+          border="1px"
+          justify="center"
+          align="center"
+        >
+          <Box p={2}>
+            <Text fontSize="lg">{penalty}</Text>
+          </Box>
+          <Spacer />
+          <Box>
+            <IconButton
+              mb={1}
+              icon={<DeleteIcon />}
+              aria-label="Delete person"
+              variant="ghost"
+            />
+          </Box>
+        </Flex>
+      ))}
+    </VStack>
+  );
+};
 
-export default PenaltyBoard
+export default PenaltyBoard;

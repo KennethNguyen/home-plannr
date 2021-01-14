@@ -87,10 +87,14 @@ const SignUp = () => {
               />
               <InputRightElement>
                 <IconButton
-                  icon={showConfirmPass === true ? <ViewOffIcon /> : <ViewIcon />}
+                  icon={
+                    showConfirmPass === true ? <ViewOffIcon /> : <ViewIcon />
+                  }
                   variant="ghost"
                   aria-label={
-                    showConfirmPass === true ? "Hide confirmed password" : "Show confirmed password"
+                    showConfirmPass === true
+                      ? "Hide confirmed password"
+                      : "Show confirmed password"
                   }
                   onClick={toggleConfirmPass}
                 />
