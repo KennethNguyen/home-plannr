@@ -19,12 +19,12 @@ const Chores = () => {
     { name: "Sam A.", id: 4, isDone: true },
     { name: "Kanye", id: 5, isDone: false },
     { name: "Sandra H.", id: 6, isDone: true },
-    { name: "John D.", id: 1, isDone: false },
-    { name: "Caroline", id: 2, isDone: false },
-    { name: "Daanish", id: 3, isDone: true },
-    { name: "Sam A.", id: 4, isDone: false },
-    { name: "Kanye", id: 5, isDone: true },
-    { name: "Sandra H.", id: 6, isDone: false },
+    { name: "John D.", id: 7, isDone: false },
+    { name: "Caroline", id: 8, isDone: false },
+    { name: "Daanish", id: 9, isDone: true },
+    { name: "Sam A.", id: 10, isDone: false },
+    { name: "Kanye", id: 11, isDone: true },
+    { name: "Sandra H.", id: 12, isDone: false },
   ];
 
   const setCheckedTask = (checkedValue, member) => ({
@@ -51,6 +51,7 @@ const Chores = () => {
               border="1px"
               justify="center"
               align="center"
+              key={member.id}
             >
               <Box p={2}>
                 <Text fontSize="md">{member.name}</Text>
@@ -73,6 +74,7 @@ const Chores = () => {
                   border="1px"
                   justify="center"
                   align="center"
+                  key={member.id}
                 >
                   <Box>
                     <Checkbox
@@ -117,6 +119,7 @@ const Chores = () => {
                   border="1px"
                   justify="center"
                   align="center"
+                  key={member.id}
                 >
                   <Box>
                     <Checkbox

@@ -34,6 +34,7 @@ const Members = () => {
           border="1px"
           justify="center"
           align="center"
+          key={member}
         >
           <Box p={2}>
             <Text fontSize="lg">{member}</Text>

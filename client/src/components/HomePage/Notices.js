@@ -15,16 +15,16 @@ const Notices = () => {
     "Game night",
     "Food night",
     "Trip to San Jose",
-    "Game night",
-    "Food night",
-    "Trip to San Jose",
-    "Game night",
-    "Food night",
-    "Trip to San Jose",
+    "Game night2",
+    "Food night2",
+    "Trip to San Jose2",
+    "Game night3",
+    "Food night3",
+    "Trip to San Jose3",
   ];
   return (
     <VStack mb={5}>
-      <Heading mt={4} texAlign="center">
+      <Heading mt={4} textAlign="center">
         Important Notices
       </Heading>
       {notices.map((notice) => (
@@ -36,6 +36,7 @@ const Notices = () => {
           border="1px"
           justify="center"
           align="center"
+          key={notice}
         >
           <Box p={2}>
             <Text fontSize="lg">{notice}</Text>

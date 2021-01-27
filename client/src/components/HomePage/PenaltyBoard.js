@@ -18,7 +18,7 @@ const PenaltyBoard = () => {
   ];
   return (
     <VStack mb={5}>
-      <Heading mt={4} texAlign="center">
+      <Heading mt={4} textAlign="center">
         But Y Tho
       </Heading>
       {penalties.map((penalty) => (
@@ -30,6 +30,7 @@ const PenaltyBoard = () => {
           border="1px"
           justify="center"
           align="center"
+          key={penalty}
         >
           <Box p={2}>
             <Text fontSize="lg">{penalty}</Text>
