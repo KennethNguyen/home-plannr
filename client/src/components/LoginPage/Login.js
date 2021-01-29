@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { Link as RouterLink } from "react-router-dom";
 import {
   useColorMode,
@@ -17,6 +17,7 @@ import {
   Link,
 } from "@chakra-ui/react";
 import { ViewIcon, ViewOffIcon, LockIcon } from "@chakra-ui/icons";
+import { UserContext } from "../../context/UserContext";
 
 const initialState = {
   username: "",
@@ -27,20 +28,24 @@ const initialState = {
 const Login = () => {
   const { colorMode } = useColorMode();
 
+  const { loginUser } = useContext(UserContext);
+
   const [showPassword, setShowPassword] = useState(false);
   const [formData, setFormData] = useState(initialState);
 
-  const togglePassword = () => setShowPassword((prevShowPassword) => !prevShowPassword);
+  const togglePassword = () =>
+    setShowPassword((prevShowPassword) => !prevShowPassword);
 
   const handleChange = (e) => {
     // eslint-disable-next-line
     // dynamic property name since e.target is an object
-    setFormData({...formData, [e.target.name]: e.target.value})
-  }
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-  }
+    loginUser(formData);
+  };
 
   return (
     <Box

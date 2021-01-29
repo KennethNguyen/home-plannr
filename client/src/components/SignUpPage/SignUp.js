@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { Link as RouterLink } from "react-router-dom";
 import {
   useColorMode,
@@ -18,32 +18,36 @@ import {
   FormHelperText,
 } from "@chakra-ui/react";
 import { ViewIcon, ViewOffIcon, LockIcon } from "@chakra-ui/icons";
+import { UserContext } from "../../context/UserContext";
 
 const initialState = {
   houseName: "",
   username: "",
   password: "",
   confirmPassword: "",
-}
+};
 
 // TODO: Use history from react-router to push user to home-page after successful sign up, finish handleSubmit()
 const SignUp = () => {
   const { colorMode } = useColorMode();
 
+  const { signupUser } = useContext(UserContext);
+
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPass, setShowConfirmPass] = useState(false);
-  const [formData, setFormData] = useState(initialState)
+  const [formData, setFormData] = useState(initialState);
 
   const togglePassword = () => setShowPassword((prevState) => !prevState);
   const toggleConfirmPass = () => setShowConfirmPass((prevState) => !prevState);
 
   const handleChange = (e) => {
-    setFormData({...formData, [e.target.name]: e.target.value})
-  }
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
 
   const handleSubmit = (e) => {
-    e.preventDefault()
-  }
+    e.preventDefault();
+    signupUser(formData);
+  };
 
   return (
     <Box
@@ -64,20 +68,22 @@ const SignUp = () => {
       </Heading>
       <form onSubmit={handleSubmit}>
         <VStack spacing={4}>
-            <FormControl isRequired>
-              <FormLabel>House Name</FormLabel>
-              <Input
-                id={
-                  colorMode === "light" ? "lightPlaceholder" : "darkPlaceholder"
-                }
-                name="houseName"
-                type="text"
-                autoFocus
-                placeholder="Banana Slugz"
-                onChange={handleChange}
-              />
-              <FormHelperText>Like a nickname for your house. NOT your address.</FormHelperText>
-            </FormControl>
+          <FormControl isRequired>
+            <FormLabel>House Name</FormLabel>
+            <Input
+              id={
+                colorMode === "light" ? "lightPlaceholder" : "darkPlaceholder"
+              }
+              name="houseName"
+              type="text"
+              autoFocus
+              placeholder="Banana Slugz"
+              onChange={handleChange}
+            />
+            <FormHelperText>
+              Like a nickname for your house. NOT your address.
+            </FormHelperText>
+          </FormControl>
           <FormControl isRequired>
             <FormLabel>Username</FormLabel>
             <Input
