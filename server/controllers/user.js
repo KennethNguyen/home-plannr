@@ -30,7 +30,9 @@ const login = async (req, res) => {
       // { expiresIn: "2hr" }
     );
 
-    return res.status(200).json({ existingUser, token });
+    const user = { _id: existingUser._id, username: existingUser.username, houseName: existingUser.houseName }
+
+    return res.status(200).json({ user, token });
   } catch (error) {
     console.log(error);
     return res.status(500).json({ error: "Internal server error." });
@@ -65,7 +67,7 @@ const signup = async (req, res) => {
       // { expiresIn: "2hr" }
     );
 
-    res.status(201).json({ createdUser, token });
+    res.status(201).json({ user: createdUser, token });
   } catch (error) {
     res.status(500).json({ error: "Internal Server Error." });
   }
