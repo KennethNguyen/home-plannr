@@ -1,11 +1,11 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Button } from "@chakra-ui/react";
-import { useHistory } from "react-router-dom";
+import { UserContext } from "../context/UserContext";
 
 const LogOutButton = () => {
-  const history = useHistory();
+  const { logoutUser } = useContext(UserContext);
 
-  const handleLogOut = () => history.push("/login");
+  const handleLogout = () => logoutUser();
 
   return (
     <div>
@@ -14,7 +14,7 @@ const LogOutButton = () => {
         top="0"
         right="0"
         variant="ghost"
-        onClick={handleLogOut}
+        onClick={handleLogout}
       >
         Log Out
       </Button>

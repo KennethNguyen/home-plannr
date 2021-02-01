@@ -1,4 +1,5 @@
 import React, { useReducer, createContext } from "react";
+import { useHistory } from "react-router-dom";
 import * as api from "../api/api";
 
 const UserContext = createContext();
@@ -10,6 +11,7 @@ const ACTIONS = {
 };
 
 const UserContextProvider = (props) => {
+  const history = useHistory();
   const userState = { authData: null };
 
   const reducer = (state, action) => {
@@ -20,7 +22,10 @@ const UserContextProvider = (props) => {
           "userDetails",
           JSON.stringify({ ...action.payload.data })
         );
-        console.log(`This is localStorage: ${localStorage.getItem('userDetails')}`)
+        // eslint-disable-next-line
+        console.log(
+          `This is localStorage: ${localStorage.getItem("userDetails")}`
+        );
         return { ...state, authData: action.payload.data };
       case ACTIONS.LOGOUT:
         localStorage.clear();
@@ -36,6 +41,7 @@ const UserContextProvider = (props) => {
     try {
       const { data } = await api.login(formData);
       dispatch({ type: ACTIONS.LOGIN, payload: { data } });
+      history.push("/");
     } catch (error) {
       // eslint-disable-next-line
       console.log(error);
@@ -43,12 +49,24 @@ const UserContextProvider = (props) => {
   };
 
   const signupUser = async (formData) => {
-    const { data } = await api.signup(formData);
-    dispatch({ type: ACTIONS.SIGNUP, payload: { data } });
+    try {
+      const { data } = await api.signup(formData);
+      dispatch({ type: ACTIONS.SIGNUP, payload: { data } });
+      history.push("/");
+    } catch (error) {
+      // eslint-disable-next-line
+      console.log(error);
+    }
   };
 
   const logoutUser = () => {
-    dispatch({ type: ACTIONS.LOGOUT });
+    try {
+      dispatch({ type: ACTIONS.LOGOUT });
+      history.push("/login");
+    } catch (error) {
+      // eslint-disable-next-line
+      console.log(error);
+    }
   };
 
   const { authData } = state;
