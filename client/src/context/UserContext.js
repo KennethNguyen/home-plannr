@@ -41,7 +41,7 @@ const UserContextProvider = (props) => {
     try {
       const { data } = await api.login(formData);
       dispatch({ type: ACTIONS.LOGIN, payload: { data } });
-      history.push("/");
+      history.push("/home");
     } catch (error) {
       // eslint-disable-next-line
       console.log(error);
@@ -52,7 +52,7 @@ const UserContextProvider = (props) => {
     try {
       const { data } = await api.signup(formData);
       dispatch({ type: ACTIONS.SIGNUP, payload: { data } });
-      history.push("/");
+      history.push("/home");
     } catch (error) {
       // eslint-disable-next-line
       console.log(error);
