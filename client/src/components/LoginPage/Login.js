@@ -1,7 +1,7 @@
 import React, { useState, useContext } from "react";
 import { Link as RouterLink } from "react-router-dom";
 import {
-  useColorMode,
+  // useColorMode,
   IconButton,
   Circle,
   VStack,
@@ -24,9 +24,8 @@ const initialState = {
   password: "",
 };
 
-// TODO: Use history from react-router to push user to home-page after successful login, finish handleSubmit()
 const Login = () => {
-  const { colorMode } = useColorMode();
+  // const { colorMode } = useColorMode(); // colorMode === "light" ? do this when lightmode : do this when darkmode
 
   const { loginUser } = useContext(UserContext);
 
@@ -67,9 +66,6 @@ const Login = () => {
           <FormControl isRequired>
             <FormLabel>Username</FormLabel>
             <Input
-              id={
-                colorMode === "light" ? "lightPlaceholder" : "darkPlaceholder"
-              }
               name="username"
               type="text"
               autoFocus
@@ -81,9 +77,6 @@ const Login = () => {
             <FormLabel>Password</FormLabel>
             <InputGroup>
               <Input
-                id={
-                  colorMode === "light" ? "lightPlaceholder" : "darkPlaceholder"
-                }
                 name="password"
                 type={showPassword === true ? "text" : "password"}
                 placeholder="******"

@@ -16,7 +16,7 @@ const LogOutButton = () => {
         variant="ghost"
         onClick={handleLogout}
       >
-        Log Out
+        Sign Out
       </Button>
     </div>
   );

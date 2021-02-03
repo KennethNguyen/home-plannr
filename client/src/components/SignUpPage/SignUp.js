@@ -1,7 +1,7 @@
 import React, { useState, useContext } from "react";
 import { Link as RouterLink } from "react-router-dom";
 import {
-  useColorMode,
+  // useColorMode,
   IconButton,
   Circle,
   VStack,
@@ -27,9 +27,8 @@ const initialState = {
   confirmPassword: "",
 };
 
-// TODO: Use history from react-router to push user to home-page after successful sign up, finish handleSubmit()
 const SignUp = () => {
-  const { colorMode } = useColorMode();
+  // const { colorMode } = useColorMode(); // colorMode === "light" ? do this when lightmode : do this when darkmode
 
   const { signupUser } = useContext(UserContext);
 
@@ -71,9 +70,6 @@ const SignUp = () => {
           <FormControl isRequired>
             <FormLabel>House Name</FormLabel>
             <Input
-              id={
-                colorMode === "light" ? "lightPlaceholder" : "darkPlaceholder"
-              }
               name="houseName"
               type="text"
               autoFocus
@@ -87,9 +83,6 @@ const SignUp = () => {
           <FormControl isRequired>
             <FormLabel>Username</FormLabel>
             <Input
-              id={
-                colorMode === "light" ? "lightPlaceholder" : "darkPlaceholder"
-              }
               name="username"
               type="text"
               placeholder="MrBeast58"
@@ -100,9 +93,6 @@ const SignUp = () => {
             <FormLabel>Password</FormLabel>
             <InputGroup>
               <Input
-                id={
-                  colorMode === "light" ? "lightPlaceholder" : "darkPlaceholder"
-                }
                 name="password"
                 type={showPassword === true ? "text" : "password"}
                 placeholder="******"
@@ -124,9 +114,6 @@ const SignUp = () => {
             <FormLabel>Confirm password</FormLabel>
             <InputGroup>
               <Input
-                id={
-                  colorMode === "light" ? "lightPlaceholder" : "darkPlaceholder"
-                }
                 name="confirmPassword"
                 type={showConfirmPass === true ? "text" : "password"}
                 placeholder="******"

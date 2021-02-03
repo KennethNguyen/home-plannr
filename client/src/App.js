@@ -5,7 +5,6 @@ import ToggleLightMode from "./components/ToggleLightMode/ToggleLightMode";
 import Login from "./components/LoginPage/Login";
 import SignUp from "./components/SignUpPage/SignUp";
 import Home from "./components/HomePage/Home";
-import LogOutButton from "./components/LogOutButton";
 import { UserContextProvider } from "./context/UserContext";
 
 function App() {
@@ -15,7 +14,6 @@ function App() {
       <UserContextProvider>
         <Switch>
           <Route exact path="/">
-            <LogOutButton />
             <Home />
           </Route>
           <Route path="/signup">

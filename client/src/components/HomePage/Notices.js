@@ -8,7 +8,7 @@ import {
   IconButton,
   Text,
 } from "@chakra-ui/react";
-import { DeleteIcon } from "@chakra-ui/icons";
+import { EditIcon, DeleteIcon } from "@chakra-ui/icons";
 
 const Notices = () => {
   const notices = [
@@ -45,8 +45,14 @@ const Notices = () => {
           <Box>
             <IconButton
               mb={1}
+              icon={<EditIcon />}
+              aria-label="Edit notice"
+              variant="ghost"
+            />
+            <IconButton
+              mb={1}
               icon={<DeleteIcon />}
-              aria-label="Delete person"
+              aria-label="Delete notice"
               variant="ghost"
             />
           </Box>

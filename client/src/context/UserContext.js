@@ -28,7 +28,7 @@ const UserContextProvider = (props) => {
         );
         return { ...state, authData: action.payload.data };
       case ACTIONS.LOGOUT:
-        localStorage.clear();
+        localStorage.removeItem("userDetails");
         return { ...state, authData: null };
       default:
         return state;
