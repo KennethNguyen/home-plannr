@@ -4,6 +4,7 @@ const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 
 const User = require("../models/user");
+const Household = require("../models/household");
 
 const login = async (req, res) => {
   const { username, password } = req.body;
@@ -26,11 +27,15 @@ const login = async (req, res) => {
 
     const token = jwt.sign(
       { username, id: existingUser._id },
-      process.env.JWT_SECRET,
+      process.env.JWT_SECRET
       // { expiresIn: "2hr" }
     );
 
-    const user = { _id: existingUser._id, username: existingUser.username, houseName: existingUser.houseName }
+    const user = {
+      _id: existingUser._id,
+      username: existingUser.username,
+      houseName: existingUser.houseName,
+    };
 
     return res.status(200).json({ user, token });
   } catch (error) {
@@ -61,13 +66,24 @@ const signup = async (req, res) => {
       password: hashedPassword,
     });
 
+    const createdHousehold = await Household.create({
+      houseName,
+      owner: createdUser._id
+    })
+
     const token = jwt.sign(
       { username: createdUser.username, id: createdUser._id },
-      process.env.JWT_SECRET,
+      process.env.JWT_SECRET
       // { expiresIn: "2hr" }
     );
 
-    res.status(201).json({ user: createdUser, token });
+    const user = {
+      _id: createdUser._id,
+      username: createdUser.username,
+      houseName: createdHousehold.houseName,
+    };
+
+    res.status(201).json({ user, token });
   } catch (error) {
     res.status(500).json({ error: "Internal Server Error." });
   }

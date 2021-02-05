@@ -8,7 +8,7 @@ import {
   IconButton,
   Text,
 } from "@chakra-ui/react";
-import { EditIcon, DeleteIcon } from "@chakra-ui/icons";
+import { AddIcon, EditIcon, DeleteIcon } from "@chakra-ui/icons";
 
 const Notices = () => {
   const notices = [
@@ -58,6 +58,11 @@ const Notices = () => {
           </Box>
         </Flex>
       ))}
+      <IconButton
+        variant="ghost"
+        aria-label="Add notice"
+        icon={<AddIcon w={5} h={5} />}
+      />
     </VStack>
   );
 };

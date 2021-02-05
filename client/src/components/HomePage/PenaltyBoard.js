@@ -8,7 +8,7 @@ import {
   IconButton,
   Text,
 } from "@chakra-ui/react";
-import { EditIcon, DeleteIcon } from "@chakra-ui/icons";
+import { AddIcon, EditIcon, DeleteIcon } from "@chakra-ui/icons";
 
 const PenaltyBoard = () => {
   const penalties = [
@@ -37,7 +37,7 @@ const PenaltyBoard = () => {
           </Box>
           <Spacer />
           <Box>
-          <IconButton
+            <IconButton
               mb={1}
               icon={<EditIcon />}
               aria-label="Edit penalty"
@@ -52,6 +52,11 @@ const PenaltyBoard = () => {
           </Box>
         </Flex>
       ))}
+      <IconButton
+        variant="ghost"
+        aria-label="Add penalty"
+        icon={<AddIcon w={5} h={5} />}
+      />
     </VStack>
   );
 };

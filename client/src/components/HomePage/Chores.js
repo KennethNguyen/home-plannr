@@ -7,9 +7,10 @@ import {
   Text,
   Spacer,
   IconButton,
+  Button,
   Checkbox,
 } from "@chakra-ui/react";
-import { DeleteIcon } from "@chakra-ui/icons";
+import { AddIcon, DeleteIcon } from "@chakra-ui/icons";
 
 const Chores = () => {
   const members = [
@@ -33,7 +34,7 @@ const Chores = () => {
   });
 
   return (
-    <Box mb={5}>
+    <Box mb={5} align="center">
       <Heading mt={4} textAlign="center">
         Chores
       </Heading>
@@ -152,6 +153,14 @@ const Chores = () => {
           </Box>
         </VStack>
       </Flex>
+      <Button
+            mt={4}
+            variant="outline"
+            leftIcon={<AddIcon w={5} h={5} />}
+            colorScheme="white"
+          >
+            Add a new chore
+          </Button>
     </Box>
   );
 };

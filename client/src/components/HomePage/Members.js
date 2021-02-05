@@ -8,7 +8,7 @@ import {
   Spacer,
   IconButton,
 } from "@chakra-ui/react";
-import { DeleteIcon } from "@chakra-ui/icons";
+import { AddIcon, DeleteIcon } from "@chakra-ui/icons";
 
 const Members = () => {
   const members = [
@@ -50,6 +50,11 @@ const Members = () => {
           </Box>
         </Flex>
       ))}
+      <IconButton
+        variant="ghost"
+        aria-label="Add house member"
+        icon={<AddIcon w={5} h={5} />}
+      />
     </VStack>
   );
 };
